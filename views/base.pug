@@ -1,0 +1,54 @@
+block variables
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+    base(href="/")
+
+    title=meta.data.title
+
+    meta(name="description" content=meta.data.description)
+
+    link(rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png")
+    link(rel="manifest" href="/site.webmanifest")
+    link(rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5")
+    meta(name="msapplication-TileColor" content="#da532c")
+    meta(name="theme-color" content="#ffffff")
+
+    meta(property="og:type" content="website")
+    meta(property="og:title" content=meta.data.title)
+    meta(property="og:description" content=meta.data.description)
+    meta(property="og:image" content="")
+
+    meta(name="twitter:card" content="")
+    meta(name="twitter:title" content=meta.data.title)
+    meta(name="twitter:description" content=meta.data.description)
+    meta(name="twitter:image" content="")
+
+    //- link(rel="preconnect" href="")
+    //- link(rel="preconnect" href="")
+
+    //- link(rel="preload" as="style" href="")
+    //- link(rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="")
+
+    //- noscript 
+    //-   link(rel="stylesheet" href="")
+
+    link(rel="stylesheet" href="main.css")
+
+  body
+    include ./partials/preloader
+    include ./partials/navigation
+
+    .content#content(data-template=template)
+      block content
+
+    //- .modals
+    //-   block modal
+
+    script(src="main.js")

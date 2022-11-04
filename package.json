@@ -1,0 +1,51 @@
+{
+  "name": "floema",
+  "version": "1.0.0",
+  "scripts": {
+    "backend:build": "node app.js",
+    "backend:dev": "nodemon app.js",
+    "frontend:build": "webpack --progress --config webpack.config.prod.js",
+    "frontend:dev": "webpack server --progress --config webpack.config.dev.js",
+    "start": "concurrently --kill-others \"npm run backend:dev\" \"npm run frontend:dev\""
+  },
+  "author": "Roberto Losa",
+  "devDependencies": {
+    "babel-loader": "^9.0.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.26.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "eslint-webpack-plugin": "^3.2.0",
+    "file-loader": "^6.2.0",
+    "glslify-loader": "^2.0.0",
+    "gsap": "^3.11.3",
+    "include-media": "^1.4.10",
+    "lodash": "^4.17.21",
+    "mini-css-extract-plugin": "^2.6.1",
+    "postcss-loader": "^7.0.1",
+    "raw-loader": "^4.0.2",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.1.0",
+    "terser-webpack-plugin": "^5.3.6",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@prismicio/client": "^5.1.1",
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "errorhandler": "^1.5.1",
+    "express": "^4.18.2",
+    "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
+    "prismic-dom": "^2.2.7",
+    "pug": "^3.0.2"
+  }
+}
