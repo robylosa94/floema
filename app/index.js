@@ -1,4 +1,7 @@
-import { each } from 'lodash'
+import each from 'lodash/each'
+
+import Preloader from 'components/Preloader'
+
 import About from 'pages/About'
 import Collections from 'pages/Collections'
 import Home from 'pages/Home'
@@ -8,8 +11,14 @@ class App {
   constructor () {
     this.createContent()
     this.createPages()
+    this.createPreloader()
 
     this.addLinksListener()
+  }
+
+  createPreloader () {
+    this.preloader = new Preloader()
+    this.preloader.once('completed', this.onPreloaded.bind(this))
   }
 
   createContent () {
@@ -27,6 +36,11 @@ class App {
 
     this.page = this.pages[this.template]
     this.page.create()
+  }
+
+  onPreloaded () {
+    this.preloader.destroy()
+
     this.page.show()
   }
 
@@ -51,6 +65,8 @@ class App {
       this.page = this.pages[this.template]
       this.page.create()
       this.page.show()
+
+      this.addLinksListener()
     } else {
       console.log('Error')
     }

@@ -3,6 +3,7 @@
     @extend %cover;
     background-color: $color-quicksand;
     color: $color-quarter-spanish-white;
+    opacity: 0;
 
     @include media('<phone') {
         height: auto;
