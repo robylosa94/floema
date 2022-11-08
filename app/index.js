@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 import each from 'lodash/each'
 
 import Preloader from 'components/Preloader'
@@ -10,10 +11,16 @@ import Product from 'pages/Product'
 class App {
   constructor () {
     this.createContent()
-    this.createPages()
+
     this.createPreloader()
+    this.createPages()
 
     this.addLinksListener()
+    this.addEventListeners()
+
+    this.onResize()
+
+    this.update()
   }
 
   createPreloader () {
@@ -38,8 +45,13 @@ class App {
     this.page.create()
   }
 
+  /**
+   * Events
+   */
   onPreloaded () {
     this.preloader.destroy()
+
+    this.onResize()
 
     this.page.show()
   }
@@ -63,13 +75,41 @@ class App {
       this.content.innerHTML = divContent.innerHTML
 
       this.page = this.pages[this.template]
+
       this.page.create()
+
+      this.onResize()
+
       this.page.show()
 
       this.addLinksListener()
     } else {
       console.log('Error')
     }
+  }
+
+  onResize () {
+    if (this.page && this.page.onResize) {
+      this.page.onResize()
+    }
+  }
+
+  /**
+   * Loop
+   */
+  update () {
+    if (this.page && this.page.update) {
+      this.page.update()
+    }
+
+    this.frame = window.requestAnimationFrame(this.update.bind(this))
+  }
+
+  /**
+   * Listeners
+   */
+  addEventListeners () {
+    window.addEventListener('resize', this.onResize.bind(this))
   }
 
   addLinksListener () {

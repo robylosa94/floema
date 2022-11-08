@@ -1,6 +1,6 @@
 .product {
     @extend %center;
-    @extend %cover;
+    @extend %pages;
     background-color: $color-quicksand;
     color: $color-quarter-spanish-white;
     opacity: 0;
