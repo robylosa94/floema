@@ -3,6 +3,7 @@
     @extend %cover;
     background-color: $color-contessa;
     color: $color-quarter-spanish-white;
+    display: flex;
     text-align: center;
     z-index: z('preloader');
 }
@@ -10,6 +11,7 @@
 .preloader__title {
     font-size: 0;
     max-width: 66rem;
+    line-height: 1;
 
     span {
         display: inline-block;
@@ -36,5 +38,4 @@
 
 .preloader__number__text {
     display: inline-block;
-    overflow: hidden;
 }

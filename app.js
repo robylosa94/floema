@@ -1,13 +1,16 @@
 require('dotenv').config()
 
-const logger = require('morgan')
-const express = require('express')
-const app = express()
-const errorHandler = require('errorhandler')
 const bodyParser = require('body-parser')
+const errorHandler = require('errorhandler')
+const express = require('express')
+const logger = require('morgan')
 const methodOverride = require('method-override')
-
 const path = require('path')
+const Prismic = require('@prismicio/client')
+const PrismicDOM = require('prismic-dom')
+const UAParser = require('ua-parser-js')
+
+const app = express()
 const port = 3000
 
 app.use(logger('dev'))
@@ -16,9 +19,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(methodOverride())
 app.use(errorHandler())
 app.use(express.static(path.join(__dirname, 'dist')))
-
-const Prismic = require('@prismicio/client')
-const PrismicDOM = require('prismic-dom')
 
 const initApi = req => {
   return Prismic.getApi(process.env.PRISMIC_ENDPOINT, {
@@ -44,6 +44,12 @@ const handleLinkResolver = doc => {
 }
 
 app.use((req, res, next) => {
+  const ua = UAParser(req.headers['user-agent'])
+
+  res.locals.isDesktop = ua.device.type === undefined
+  res.locals.isPhone = ua.device.type === 'mobile'
+  res.locals.isTablet = ua.device.type === 'tablet'
+
   res.locals.Link = handleLinkResolver
 
   res.locals.Numbers = index => {

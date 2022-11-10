@@ -4,7 +4,7 @@ block variables
   - var template = 'product'
 
 block content
-  .product 
+  .product(data-background="#BC978C" data-color="#F9F1E7")
     .product__wrapper
       figure.product__media 
         img.product__media__image(alt=product.data.image.alt data-src=product.data.image.url)
@@ -42,3 +42,4 @@ block content
     button.product__button Close
       svg.product__button__icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 60")
         path(stroke="currentColor" fill="none" d="M62,0.5c34,0,61.5,13.2,61.5,29.5S96,59.5,62,59.5S0.5,46.3,0.5,30S28,0.5,62,0.5z")
+        path.home__link__icon__path(stroke="#FFC400" fill="none" d="M62,0.5c34,0,61.5,13.2,61.5,29.5S96,59.5,62,59.5S0.5,46.3,0.5,30S28,0.5,62,0.5z")

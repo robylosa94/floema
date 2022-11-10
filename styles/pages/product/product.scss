@@ -1,8 +1,8 @@
 .product {
     @extend %center;
     @extend %pages;
-    background-color: $color-quicksand;
-    color: $color-quarter-spanish-white;
+    // background-color: $color-quicksand;
+    // color: $color-quarter-spanish-white;
     opacity: 0;
 
     @include media('<phone') {
